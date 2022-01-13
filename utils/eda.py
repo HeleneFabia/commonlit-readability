@@ -1,16 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 from collections import Counter
 from typing import Tuple, List, Dict, Optional
 
 import re
 import nltk
 from nltk import FreqDist
-from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 from nltk.util import ngrams
 from wordcloud import WordCloud
 
