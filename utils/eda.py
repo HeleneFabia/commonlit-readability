@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from collections import Counter
+from typing import Tuple, List, Dict, Optional
 
 import re
 import nltk
@@ -19,7 +20,7 @@ nltk.download("punkt")
 nltk.download('omw-1.4')
 
 
-def preprocess_for_analysis(text):
+def preprocess_for_analysis(text: str) -> str:
     
     text = re.sub("[^a-zA-Z]", " ", text)
     text = nltk.word_tokenize(text)
@@ -32,7 +33,7 @@ def preprocess_for_analysis(text):
     return text
 
 
-def get_ngram_and_freqs(text_list):
+def get_ngram_and_freqs(text_list: List[str]) -> Tuple[Dict[str, List[str]], Dict[str, List[int]]]:
     
     ngram_dict, freqs_dict = dict(), dict()
     ngrams_names = ["unigrams", "bigrams", "trigrams"]
@@ -51,7 +52,7 @@ def get_ngram_and_freqs(text_list):
     return ngram_dict, freqs_dict
 
 
-def get_wordcloud(text_list, num_words):
+def get_wordcloud(text_list: List[str], num_words: int) -> WordCloud:
     
     text = [text.split() for text in text_list]
     text = [word for sublist in text for word in sublist]
@@ -68,7 +69,7 @@ def get_wordcloud(text_list, num_words):
     return cloud
 
 
-def get_word_count_and_length(text_list):
+def get_word_count_and_length(text_list: List[str]) -> Tuple[List[int], List[int]]:
     
     texts = text_list.apply(lambda text: text.split())
     texts_filtered = [list(filter(None, text)) for text in texts]
@@ -86,7 +87,7 @@ def get_word_count_and_length(text_list):
     return word_count, word_length
 
 
-def get_sentence_count_and_length(text_list):
+def get_sentence_count_and_length(text_list: List[str]) -> Tuple[List[int], List[int]]:
     texts = text_list.apply(lambda text: text.split("."))
     texts_filtered = [list(filter(None, text)) for text in texts]
     sentence_count = [len(text) for text in texts_filtered]
@@ -103,12 +104,12 @@ def get_sentence_count_and_length(text_list):
     return sentence_count, sentence_length
 
 
-def _get_palette():
+def _get_palette() -> List[str]:
     palette = ["#7209C7","#3F99C5","#146F63","#F62585","#FFBA10"]
     return palette
 
 
-def get_histplot(df, col1, title, col2=None):
+def get_histplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
     sns.histplot(df[col1], color=palette[0], label="Excerpt", binwidth=0.2) 
     if col2:
@@ -119,7 +120,7 @@ def get_histplot(df, col1, title, col2=None):
         plt.legend(['Excerpt', 'Excerpt preprocessed'], loc="upper right")
 
 
-def get_kdeplot(df, col1, title, col2=None):
+def get_kdeplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
     sns.kdeplot(df[col1], color=palette[0], label="Excerpt") 
     if col2:
@@ -130,7 +131,7 @@ def get_kdeplot(df, col1, title, col2=None):
         plt.legend(['Excerpt', 'Excerpt preprocessed'], loc="upper right")
 
         
-def get_scatterplot(df, col1, title, col2=None):
+def get_scatterplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
     sns.scatterplot(data=df, x=col1, y="target", color=palette[0]) 
     if col2:
