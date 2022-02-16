@@ -119,9 +119,9 @@ def get_histplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=No
 
 def get_kdeplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
-    sns.kdeplot(df[col1], color=palette[0], label="Excerpt") 
+    sns.kdeplot(df[col1], color=palette[0], label="Excerpt", fill=True) 
     if col2:
-        sns.kdeplot(df[col2], color=palette[4], label="Excerpt preprocessed") 
+        sns.kdeplot(df[col2], color=palette[4], label="Excerpt preprocessed", fill=True) 
     plt.title(title)
     plt.xlabel("")
     if col2:
@@ -130,9 +130,9 @@ def get_kdeplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=Non
         
 def get_scatterplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
-    sns.scatterplot(data=df, x=col1, y="target", color=palette[0]) 
+    sns.scatterplot(data=df, x=col1, y="target", color=palette[0], marker="o") 
     if col2:
-        sns.scatterplot(data=df, x=col2, y="target", color=palette[4]) 
+        sns.scatterplot(data=df, x=col2, y="target", color=palette[4], marker="o") 
     plt.title(title)
     plt.xlabel("")
     if col2:
