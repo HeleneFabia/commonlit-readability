@@ -108,10 +108,10 @@ def _get_palette() -> List[str]:
 
 def get_histplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=None) -> None:
     palette = _get_palette()
-    sns.histplot(df[col1], color=palette[0], label="Excerpt", binwidth=0.2) 
+    sns.histplot(df[col1], color=palette[0], label="Excerpt", binwidth=0.2, alpha=0.5) 
     if col2:
-        sns.histplot(df[col2], color=palette[4], label="Excerpt preprocessed", binwidth=0.2) 
-    plt.title(title)
+        sns.histplot(df[col2], color=palette[4], label="Excerpt preprocessed", binwidth=0.2, alpha=0.5) 
+    plt.title(title, fontsize=15)
     plt.xlabel("")
     if col2:
         plt.legend(['Excerpt', 'Excerpt preprocessed'], loc="upper right")
@@ -122,7 +122,7 @@ def get_kdeplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]=Non
     sns.kdeplot(df[col1], color=palette[0], label="Excerpt", fill=True) 
     if col2:
         sns.kdeplot(df[col2], color=palette[4], label="Excerpt preprocessed", fill=True) 
-    plt.title(title)
+    plt.title(title, fontsize=15)
     plt.xlabel("")
     if col2:
         plt.legend(['Excerpt', 'Excerpt preprocessed'], loc="upper right")
@@ -133,7 +133,7 @@ def get_scatterplot(df: pd.DataFrame, col1: str, title: str, col2: Optional[str]
     sns.scatterplot(data=df, x=col1, y="target", color=palette[0], marker="o") 
     if col2:
         sns.scatterplot(data=df, x=col2, y="target", color=palette[4], marker="o") 
-    plt.title(title)
+    plt.title(title, fontsize=15)
     plt.xlabel("")
     if col2:
         plt.legend(['Excerpt', 'Excerpt preprocessed'], loc="upper right")
