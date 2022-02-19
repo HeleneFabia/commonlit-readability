@@ -1,4 +1,4 @@
-# Predicting Text Readability with BERT [in process]
+# Predicting Text Readability with BERT [in progress]
 
 <p align="right">
   <img width="600" height="400" src="https://github.com/HeleneFabia/commonlit-readability/blob/main/images/books-g655f0c6ce_1920.jpg">
