@@ -9,8 +9,9 @@
 
 The [CommonLit Readability](https://www.kaggle.com/c/commonlitreadabilityprize/overview) challenge is about predicting the appropriate reading level of a text excerpt. The purpose behind this is that students learn better if the texts they read are closely matched to their reading abilities. However, commonly used formulas to estimate the readability of a text are not very precise or very costly (and thus not used in a public education context). 
 
-## Data Analysis
+### Data Analysis
 See my notebook [here](https://github.com/HeleneFabia/commonlit-readability/blob/main/notebooks/eda.ipynb).
 
-## Modelling
-...
+### Modelling
+See my notebook [here](https://github.com/HeleneFabia/commonlit-readability/blob/main/notebooks/train_with_bert.ipynb).
+
